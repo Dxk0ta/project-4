@@ -19,7 +19,7 @@
     </div>
 
     <div class="button-container">
-      <button @click="goToPlantSearch" class="btn btn-primary">Back to Plant Search</button>
+      <button @click="goToPlantSearch" class="btn btn-primary">Back to Search</button>
     </div>
   </div>
 </template>

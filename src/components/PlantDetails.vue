@@ -1,32 +1,30 @@
 <template>
-    <div class="plant-details container">
-      <h1 class="mt-5">Plant Details</h1>
-  
-      <div class="card mt-4">
-        <img :src="plant.thumbnail" alt="Plant thumbnail" class="card-img-top" />
-        <div class="card-body">
-          <h2 class="card-title">{{ plant.commonName }}</h2>
-          <h4 v-if="plant.cycle" class="card-text">Plant Cycle: {{ plant.cycle }}</h4>
-          <!-- Display other plant details here -->
-        </div>
-      </div>
-  
-      <div class="mt-4">
-        <button @click="addToGardenHandler" class="btn btn-success add-to-garden-btn">Add To Garden</button>
-        <button @click="backToSearch" class="btn btn-success back-to-search-btn">Back to Search</button>
-      </div>
-  
-      <div v-if="showMessageOverlay" class="message-overlay">
-        <div class="message-content">
-          <h3>This plant already exists in your garden.</h3>
-          <p>Please choose a different plant on the search page.</p>
-          <button @click="closeMessageOverlay" class="btn btn-secondary">Close</button>
-        </div>
+  <div class="plant-details container">
+    <h1 class="mt-5">Plant Details</h1>
+
+    <div class="card mt-4">
+      <img :src="plant.thumbnail" alt="Plant thumbnail" class="card-img-top" />
+      <div class="card-body">
+        <h2 class="card-title">{{ plant.commonName }}</h2>
+        <h4 v-if="plant.cycle" class="card-text">Plant Cycle: {{ plant.cycle }}</h4>
+        <!-- Display other plant details here -->
       </div>
     </div>
-  </template>
-  
-  
+
+    <div class="mt-4">
+      <button @click="addToGardenHandler" class="btn btn-primary">Add To Garden</button>
+      <button @click="backToSearch" class="btn btn-primary">Back to Search</button>
+    </div>
+
+    <div v-if="showMessageOverlay" class="message-overlay">
+      <div class="message-content">
+        <h3>This plant already exists in your garden.</h3>
+        <p>Please choose a different plant on the search page.</p>
+        <button @click="closeMessageOverlay" class="btn btn-secondary">Close</button>
+      </div>
+    </div>
+  </div>
+</template>
   
   
   <script>
@@ -82,19 +80,11 @@
   
   <style scoped>
   .plant-details {
-    background-color: #e4f4e8; /* Light green background color */
+    background-color: #e4f4e8;
     padding: 20px;
     font-family: 'Arial', sans-serif;
   }
-  
-  .add-to-garden-btn {
-    margin-right: 10px;
-  }
-  
-  .back-to-search-btn {
-    margin-left: 10px;
-  }
-  
+
   .message-overlay {
     position: fixed;
     top: 0;
@@ -106,11 +96,64 @@
     justify-content: center;
     align-items: center;
   }
-  
+
   .message-content {
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
     text-align: center;
   }
-  </style>
+
+  .btn {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-primary {
+    background-color: #4caf50;
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    background-image: linear-gradient(45deg, #0d7377, #18d6ba);
+  }
+
+  .btn-secondary {
+    background-color: #df5151;
+    color: #ffffff;
+  }
+
+  .btn-secondary:hover {
+    background-color: #c42f2f;
+  }
+
+  .plant-thumbnail {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+
+  /* Responsive Styles */
+@media (max-width: 768px) {
+  .cardId {
+    flex: 0 0 calc(50% - 20px);
+  }
+}
+
+@media (max-width: 576px) {
+  .cardId {
+    flex: 0 0 calc(100% - 20px);
+  }
+}
+</style>
+
