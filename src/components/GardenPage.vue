@@ -9,67 +9,93 @@
               :src="plant.thumbnail"
               alt="Plant thumbnail"
               class="card-img-top"
-              @click="viewPlantDetails(plant.id, plant.commonName, plant.thumbnail, plant.cycle, plant.isPoisonous, plant.other_name, plant.watering)"
+              @click="
+                viewPlantDetails(
+                  plant.id,
+                  plant.commonName,
+                  plant.thumbnail,
+                  plant.cycle,
+                  plant.isPoisonous,
+                  plant.other_name,
+                  plant.watering
+                )
+              "
             />
           </router-link>
         </div>
         <div class="card-body">
           <h2 class="card-title">{{ plant.commonName }}</h2>
-          <button @click="deletePlantHandler(plant.id)" class="btn btn-danger">Delete</button>
+          <button @click="deletePlantHandler(plant.id)" class="btn btn-danger">
+            Delete
+          </button>
         </div>
       </div>
     </div>
 
     <div class="button-container">
-      <router-link to="/plantsearch" class="btn btn-primary">Back to Search</router-link>
+      <router-link to="/plantsearch" class="btn btn-primary"
+        >Back to Search</router-link
+      >
     </div>
   </div>
 </template>
 
 <script>
-  import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters } from "vuex";
+// import mongoose from 'mongoose';
+// import Plant from '../../server/models/Plant';
+// const plantModel = mongoose.model('Plant', Plant);
+// console.log(plantModel)
 
-  export default {
-    computed: {
-      ...mapGetters(['getGarden']),
-      hasReminders() {
-        return this.plants.some((plant) => plant.watering !== 'None');
-      },
-      garden() {
-        return this.getGarden;
-      },
+export default {
+  computed: {
+    ...mapGetters(["getGarden"]),
+    hasReminders() {
+      return this.plants.some((plant) => plant.watering !== "None");
     },
-    methods: {
-      ...mapActions(['deletePlant']),
-      deletePlantHandler(plantId) {
-        this.deletePlant(plantId);
-      },
-      viewPlantDetails(plantId, commonName, thumbnail, cycle, isPoisonous, otherName, watering) {
-        this.$router.push({
-          name: 'PlantDetails',
-          params: { plantId: plantId },
-          query: {
-            commonName: commonName,
-            thumbnail: thumbnail,
-            cycle: cycle,
-            isPoisonous: isPoisonous,
-            other_name: JSON.stringify(otherName),
-            watering: watering,
-          },
-        });
-      },
-      displayOtherNames(otherNames) {
-        return otherNames.join(', ');
-      },
+    garden() {
+      return this.getGarden;
     },
-  };
+  },
+  methods: {
+    ...mapActions(["deletePlant"]),
+    deletePlantHandler(plantId) {
+      this.deletePlant(plantId);
+    },
+    viewPlantDetails(
+      plantId,
+      commonName,
+      thumbnail,
+      cycle,
+      isPoisonous,
+      otherName,
+      watering
+    ) {
+      this.$router.push({
+        name: "PlantDetails",
+        params: { plantId: plantId },
+        query: {
+          commonName: commonName,
+          thumbnail: thumbnail,
+          cycle: cycle,
+          isPoisonous: isPoisonous,
+          other_name: JSON.stringify(otherName),
+          watering: watering,
+        },
+      });
+    },
+    displayOtherNames(otherNames) {
+      return otherNames.join(", ");
+    },
+  },
+};
 </script>
 
 <style scoped>
 .garden-page {
   background-color: #e4f4e8;
   padding: 20px;
-  font-family: 'Verdana', sans-serif;
+  font-family: "Verdana", sans-serif;
 }
 
 .cardId {
@@ -178,6 +204,4 @@
     flex: 0 0 calc(100% - 20px);
   }
 }
-
-
 </style>

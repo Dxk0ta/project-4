@@ -43,7 +43,9 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-
+// import plantSchema from "../../server/models/Plant";
+// const mongoose = require("mongoose");
+const plantDB = require("../../server/models/Plant.js");
 export default {
   data() {
     return {
@@ -51,7 +53,6 @@ export default {
         commonName: "",
         thumbnail: "",
         cycle: "",
-        // Add other properties for plant details
       },
       showMessageOverlay: false,
     };
@@ -85,13 +86,28 @@ export default {
       this.showMessageOverlay = false;
     },
     addToGardenHandler() {
+      console.log("gardenhandler");
+      console.log("plantdb", plantDB);
+      plantDB
+        .create({
+          commonName: "spiderman plant",
+          thumbnail: "",
+          cycle: "",
+          other_name: [],
+          isPoisonous: false,
+          watering: "",
+        })
+        .then(() => {
+          console.log("Done insertion");
+        })
+        .catch((error) => console.error(error));
       const isDuplicate = this.getGarden.some(
         (p) => p.commonName === this.plant.commonName
       );
       if (!isDuplicate) {
         const plant = { ...this.plant };
         plant.id = Math.random().toString(36).substr(2, 9);
-        this.$store.dispatch("addToGarden", plant); // Update this line
+        this.$store.dispatch("addToGarden", plant);
         this.$router.push("/gardenpage");
       } else {
         this.showMessageOverlay = true;
