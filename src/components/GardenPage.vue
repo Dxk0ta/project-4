@@ -15,11 +15,6 @@
         </div>
         <div class="card-body">
           <h2 class="card-title">{{ plant.commonName }}</h2>
-          <template v-if="plant.other_name && plant.other_name.length > 0">
-            <h4 class="card-text">Other Names: {{ displayOtherNames(plant.other_name) }}</h4>
-          </template>
-          <h4 class="card-text">Plant Cycle: {{ plant.cycle }}</h4>
-          <p v-if="plant.isPoisonous" class="poisonous-message">Caution: Plant is poisonous</p>
           <button @click="deletePlantHandler(plant.id)" class="btn btn-danger">Delete</button>
         </div>
       </div>

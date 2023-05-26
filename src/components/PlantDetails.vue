@@ -4,11 +4,16 @@
 
     <div class="card mt-4">
       <img :src="plant.thumbnail" alt="Plant thumbnail" class="card-img-top" />
-      <div class="card-body">
-        <h2 class="card-title">{{ plant.commonName }}</h2>
-        <h4 v-if="plant.cycle" class="card-text">Plant Cycle: {{ plant.cycle }}</h4>
-        <!-- Display other plant details here -->
-      </div>
+        <!-- <h2 class="card-title">{{ plant.commonName }}</h2> -->
+        <div class="card-body">
+          <h2 class="card-title">{{ plant.commonName }}</h2>
+          <template v-if="plant.other_name && plant.other_name.length > 0">
+             <h4 class="card-text">Other Names: {{ displayOtherNames(plant.other_name) }}</h4>
+           </template>
+          <h4 class="card-text">Plant Cycle: {{ plant.cycle }}</h4>
+          <h4 class="card-text">Plant Maintenance: {{ plant.watering }}</h4>
+          <p v-if="plant.isPoisonous" class="poisonous-message">Caution: Plant is poisonous</p>
+        </div>
     </div>
 
     <div class="mt-4">
@@ -28,7 +33,7 @@
   
   
   <script>
-  import { mapActions, mapGetters } from 'vuex';
+  import { mapGetters } from 'vuex';
   
   export default {
     data() {
@@ -43,6 +48,7 @@
       };
     },
     mounted() {
+    this.plant.other_name = this.$route.query.other_name;
     this.plant.commonName = this.$route.query.commonName;
     this.plant.thumbnail = this.$route.query.thumbnail;
     this.plant.cycle = this.$route.query.cycle;
@@ -54,7 +60,17 @@
       ...mapGetters(['getGarden']),
     },
     methods: {
-      ...mapActions(['addToGarden']),
+      displayOtherNames(names) {
+        if (Array.isArray(names)) {
+          return names.join(', ');
+        } else if (typeof names === 'string') {
+          // eslint-disable-next-line no-useless-escape
+          const formattedNames = names.replace(/[\[\]]/g, '');
+          return formattedNames;
+        } else {
+          return '';
+        }
+      },
       closeMessageOverlay() {
       this.showMessageOverlay = false;
     },
