@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "express": "node server/server.js",
-    "start": "concurrently \"npm run serve\" \"node server/server.js\""
+    "start": "npm run serve && node server/server.js"
   },
   "dependencies": {
     "axios": "^1.4.0",
