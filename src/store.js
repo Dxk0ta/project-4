@@ -1,3 +1,4 @@
+// vuex/store.js
 import { createStore } from "vuex";
 import Vue from "vue";
 
@@ -9,13 +10,11 @@ export default createStore({
   },
   mutations: {
     addToGarden(state, plant) {
-      // console.log('plant', plant)
       const updatedPlant = { ...plant, reminders: [], watering: plant.watering };
       state.gardenPlants.push(updatedPlant);
-      // console.log("updated plant:", updatedPlant);
     },
     setPlants(state, plants) {
-        state.plants = plants;
+      state.plants = plants;
     },
     setShowReminders(state, value) {
       state.showReminders = value;
@@ -35,8 +34,8 @@ export default createStore({
   },
   actions: {
     setPlants({ commit }, plants) {
-        commit("setPlants", plants);
-      },
+      commit("setPlants", plants);
+    },
     addToGarden({ commit, state }, plant) {
       const isDuplicate = state.gardenPlants.some((p) => p.id === plant.id);
       if (!isDuplicate) {
