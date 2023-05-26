@@ -45,7 +45,7 @@
 import { mapGetters, mapActions } from "vuex";
 // import plantSchema from "../../server/models/Plant";
 // const mongoose = require("mongoose");
-const plantDB = require("../../server/models/Plant.js");
+// const { plantDB } = require("../../server/models/Plant.js");
 export default {
   data() {
     return {
@@ -87,20 +87,20 @@ export default {
     },
     addToGardenHandler() {
       console.log("gardenhandler");
-      console.log("plantdb", plantDB);
-      plantDB
-        .create({
-          commonName: "spiderman plant",
-          thumbnail: "",
-          cycle: "",
-          other_name: [],
-          isPoisonous: false,
-          watering: "",
-        })
-        .then(() => {
-          console.log("Done insertion");
-        })
-        .catch((error) => console.error(error));
+      // console.log("plantdb", plantDB);
+      // plantDB
+      //   .create({
+      //     commonName: "spiderman plant",
+      //     thumbnail: "",
+      //     cycle: "",
+      //     other_name: [],
+      //     isPoisonous: false,
+      //     watering: "",
+      //   })
+      //   .then(() => {
+      //     console.log("Done insertion");
+      //   })
+      //   .catch();
       const isDuplicate = this.getGarden.some(
         (p) => p.commonName === this.plant.commonName
       );

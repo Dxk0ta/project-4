@@ -9,6 +9,6 @@ const plantSchema = new mongoose.Schema({
   watering: String
 });
 
-const Plant = mongoose.model('Plant', plantSchema);
+const plantDB = mongoose.model('Plant', plantSchema);
 
-module.exports = Plant;
+module.exports = { plantDB };
