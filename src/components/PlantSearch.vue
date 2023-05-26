@@ -76,7 +76,7 @@ export default {
     viewPlantDetails(plantId, commonName, thumbnail, cycle) {
       const plant = this.plants.find((p) => p.id === plantId);
       if (plant) {
-        console.log('conditionallll   ', plant)
+        // console.log('conditionallll   ', plant)
         this.$router.push({
           name: 'PlantDetails',
           params: { plantId: plantId },
