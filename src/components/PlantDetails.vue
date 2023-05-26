@@ -46,6 +46,7 @@
     this.plant.commonName = this.$route.query.commonName;
     this.plant.thumbnail = this.$route.query.thumbnail;
     this.plant.cycle = this.$route.query.cycle;
+    this.plant.watering = this.$route.query.watering
     console.log('Plant:', this.plant); // Log the plant object to verify its properties
     console.log('Cycle:', this.plant.cycle); // Log the value of the plant's cycle
   },
@@ -61,6 +62,7 @@
         const isDuplicate = this.getGarden.some(p => p.commonName === this.plant.commonName);
         if (!isDuplicate) {
           const plant = { ...this.plant };
+          console.log('plant   ', plant)
           plant.id = Math.random().toString(36).substr(2, 9); // Generate a unique ID for the plant
           this.addToGarden(plant);
           this.$router.push('/gardenpage');

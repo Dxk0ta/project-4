@@ -9,6 +9,7 @@ export default createStore({
   },
   mutations: {
     addToGarden(state, plant) {
+      console.log('plant', plant)
       const updatedPlant = { ...plant, reminders: [], watering: plant.watering };
       state.gardenPlants.push(updatedPlant);
       console.log("updated plant:", updatedPlant);

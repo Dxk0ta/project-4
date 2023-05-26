@@ -4,7 +4,7 @@
     <div v-if="hasGardenPlants" class="plant-list">
       <div v-for="plant in gardenPlants" :key="plant.id" class="plant-item">
         <div class="plant-info">
-          <img :src="plant.default_image.thumbnail" :alt="plant.commonName" class="plant-thumbnail" />
+          <img :src="plant.thumbnail" :alt="plant.commonName" class="plant-thumbnail" />
           <p class="plant-name">{{ plant.commonName }}</p>
           <button class="btn btn-primary" @click="openModal(plant)">View Reminders</button>
         </div>

@@ -76,6 +76,7 @@ export default {
     viewPlantDetails(plantId, commonName, thumbnail, cycle) {
       const plant = this.plants.find((p) => p.id === plantId);
       if (plant) {
+        console.log('conditionallll   ', plant)
         this.$router.push({
           name: 'PlantDetails',
           params: { plantId: plantId },
@@ -85,6 +86,7 @@ export default {
             cycle: cycle,
             isPoisonous: plant.isPoisonous,
             other_name: JSON.stringify(plant.other_name),
+            watering: plant.watering
           },
         });
       } else {
