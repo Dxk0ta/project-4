@@ -1,7 +1,7 @@
 # BLOOM
 BLOOM is an app made to help users gain more knowledge on the plants they own (or plants in general) and give tips and notification to remind the user when to care for their plants and what kind of care to give them!
 
-Github link: https://github.com/Dxk0ta/Project4.git
+Github link: https://github.com/Dxk0ta/Project-4.git
 
 ## Getting started
 I started by thinking out the app and making sure it would be something do able. Once I got a good idea of how the user expireince would play out, I started working out the ERD charts, RESTFUL routing charts, and wireframe. I wanted to make sure the app would have a good user expierence.
