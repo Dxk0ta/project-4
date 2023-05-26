@@ -1,12 +1,14 @@
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-// const plantSchema = new mongoose.Schema({
-//   commonName: String,
-//   thumbnail: String,
-//   cycle: String
-//   // Add other properties for plant details
-// });
+const plantSchema = new mongoose.Schema({
+  commonName: String,
+  thumbnail: String,
+  cycle: String,
+  other_name: Array,
+  isPoisonous: Boolean,
+  watering: String
+});
 
-// const Plant = mongoose.model('Plant', plantSchema);
+const Plant = mongoose.model('Plant', plantSchema);
 
-// module.exports = Plant;
+module.exports = Plant;
