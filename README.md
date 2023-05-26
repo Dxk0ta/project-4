@@ -57,25 +57,25 @@ I am very excited but pretty nervous to use Vue. I just started a crash course o
 
 ---
 
-![wireframe](./assets/wireframe.png)
+![wireframe](./src/assets/wireframe.png)
 
 ## ERDs
 
 ---
 
-![wireframe](./assets/erds.png)
+![wireframe](./src/assets/erd.png)
 
 ## RESTFUL Routing chart
 
 ---
 
-## ![wireframe](./assets/restful.png)
+## ![wireframe](./src/assets/restful.png)
 
 ## User Story
 
 ---
 
-## ![wireframe](./assets/userstory.png)
+## ![wireframe](./src/assets/userstory.png)
 
 ### APIs I will be using
 
@@ -112,7 +112,7 @@ What the plan is:
 
 What I did today:
 
--
+- Finished my front end routes and got all the pages communicating correctly with eachother. Also got the API put in.
 
 ---
 
@@ -124,7 +124,7 @@ What the plan is:
 
 What I did today:
 
--
+- Although the API was put in yesterday, I spent a good chunk of the day getting the correct data from the api to render where i want that specific data to be placed.
 
 ---
 
@@ -136,7 +136,7 @@ What the plan is:
 
 What I did today:
 
--
+- I worked on the styling for all of my components so that all the buttons and code match each other's styles.
 
 ---
 
@@ -148,7 +148,7 @@ What the plan is:
 
 What I did today:
 
--
+- Today I worked on setting up my mongoose and mongodb and setting up the server side code to the client side.
 
 ---
 
@@ -156,11 +156,11 @@ What I did today:
 
 What the plan is:
 
-- If everything is running smoothly and there are no bugs, I would use this time to start looking over what I have and how I can make it a better user expirence, and then I would start on my stretch goals
+- If everything is running smoothly and there are no bugs, I would use this time to start looking over what I have and how I can make it a better user experience, and then I would start on my stretch goals
 
 What I did today:
 
--
+- I worked on the Garden Page so that when I added a plant to the garden duplicates wouldn't appear and the correct data would render on the screen.
 
 ---
 
@@ -172,7 +172,7 @@ What the plan is:
 
 What I did today:
 
--
+- I worked on the Reminders Page and the Reminders Modal so that I could get checklists that displayed the proper logic for when to water a plant. I also made it so when the items were checked off a message would display and when all reminders were complete another good job type of message would display.
 
 ---
 
@@ -184,7 +184,7 @@ What the plan is:
 
 What I did today:
 
--
+- I added more details to my plant details page and got everything ready for production. I debugged all of my code with console logs to make sure it was working as needed and I was able to complete full MVP requirements. I also made all of my pages responsive with different screen sizes.
 
 ## Post Project
 

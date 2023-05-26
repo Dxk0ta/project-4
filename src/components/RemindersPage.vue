@@ -4,14 +4,22 @@
     <div v-if="hasGardenPlants" class="plant-list">
       <div v-for="plant in gardenPlants" :key="plant.id" class="plant-item">
         <div class="plant-info">
-          <img :src="plant.thumbnail" :alt="plant.commonName" class="plant-thumbnail" />
+          <img
+            :src="plant.thumbnail"
+            :alt="plant.commonName"
+            class="plant-thumbnail"
+          />
           <p class="plant-name">{{ plant.commonName }}</p>
-          <button class="btn btn-primary" @click="openModal(plant)">View Reminders</button>
+          <button class="btn btn-primary" @click="openModal(plant)">
+            View Reminders
+          </button>
         </div>
       </div>
     </div>
     <div v-else>
-      <p class="no-plants-message">Please add plants to your garden so you can get reminders.</p>
+      <p class="no-plants-message">
+        Please add plants to your garden so you can get reminders.
+      </p>
     </div>
     <transition name="modal-fade">
       <div v-if="showModal" class="modal-container">
@@ -24,15 +32,15 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import ReminderModal from './ReminderModal.vue';
+import { mapGetters } from "vuex";
+import ReminderModal from "./ReminderModal.vue";
 
 export default {
   components: {
     ReminderModal,
   },
   computed: {
-    ...mapGetters(['getGarden']),
+    ...mapGetters(["getGarden"]),
     hasGardenPlants() {
       return this.getGarden.length > 0;
     },
@@ -120,13 +128,12 @@ export default {
 }
 
 .plant-item {
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 @media (max-width: 768px) {
-    .reminders-page {
-      width: 90%;
-    }
-  } 
-
+  .reminders-page {
+    width: 90%;
+  }
+}
 </style>
