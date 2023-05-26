@@ -122,4 +122,11 @@ export default {
 .plant-item {
   margin-bottom: 20px; 
 }
+
+@media (max-width: 768px) {
+    .reminders-page {
+      width: 90%;
+    }
+  } 
+
 </style>

@@ -25,15 +25,21 @@ export default {
 </script>
 
 <style scoped>
-/* Your existing styles */
+
+body {
+  margin: 0;
+  padding: 0;
+}
 
 .navbar {
   background-color: #4caf50;
   color: #ffffff;
-  padding: 20px;
+  padding: 20px 20px 0;
+  margin: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 0;
 }
 
 .navbar-left {
@@ -74,10 +80,16 @@ export default {
   .navbar {
     flex-direction: column;
     align-items: center;
+    padding: 20px;
+    margin-top: 0;
   }
 
   .navbar-right {
     margin-top: 10px;
+  }
+  
+  .navbar-item {
+    margin-bottom: 10px;
   }
 }
 </style>
