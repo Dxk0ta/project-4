@@ -4,7 +4,14 @@
     <div class="row">
       <div v-for="plant in garden" :key="plant.id" class="cardId card mb-3">
         <div class="image-container">
-          <img :src="plant.thumbnail" alt="Plant thumbnail" class="card-img-top" />
+          <router-link :to="`/plant/${plant.id}`">
+            <img
+              :src="plant.thumbnail"
+              alt="Plant thumbnail"
+              class="card-img-top"
+              @click="viewPlantDetails(plant.id, plant.commonName, plant.thumbnail, plant.cycle, plant.isPoisonous, plant.other_name, plant.watering)"
+            />
+          </router-link>
         </div>
         <div class="card-body">
           <h2 class="card-title">{{ plant.commonName }}</h2>
@@ -19,37 +26,48 @@
     </div>
 
     <div class="button-container">
-      <button @click="goToPlantSearch" class="btn btn-primary">Back to Search</button>
+      <router-link to="/plantsearch" class="btn btn-primary">Back to Search</router-link>
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+  import { mapActions, mapGetters } from 'vuex';
 
-export default {
-  computed: {
-    ...mapGetters(['getGarden']),
-    hasReminders() {
-    return this.plants.some(plant => plant.watering !== 'None');
-  },
-    garden() {
-      return this.getGarden;
-    }
-  },
-  methods: {
-    ...mapActions(['deletePlant']),
-    deletePlantHandler(plantId) {
-      this.deletePlant(plantId);
+  export default {
+    computed: {
+      ...mapGetters(['getGarden']),
+      hasReminders() {
+        return this.plants.some((plant) => plant.watering !== 'None');
+      },
+      garden() {
+        return this.getGarden;
+      },
     },
-    goToPlantSearch() {
-      this.$router.push('/plantsearch');
+    methods: {
+      ...mapActions(['deletePlant']),
+      deletePlantHandler(plantId) {
+        this.deletePlant(plantId);
+      },
+      viewPlantDetails(plantId, commonName, thumbnail, cycle, isPoisonous, otherName, watering) {
+        this.$router.push({
+          name: 'PlantDetails',
+          params: { plantId: plantId },
+          query: {
+            commonName: commonName,
+            thumbnail: thumbnail,
+            cycle: cycle,
+            isPoisonous: isPoisonous,
+            other_name: JSON.stringify(otherName),
+            watering: watering,
+          },
+        });
+      },
+      displayOtherNames(otherNames) {
+        return otherNames.join(', ');
+      },
     },
-    displayOtherNames(otherNames) {
-      return otherNames.join(', ');
-    }
-  }
-};
+  };
 </script>
 
 <style scoped>
