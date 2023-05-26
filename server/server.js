@@ -21,7 +21,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/bloom', {
   .catch((error) => console.error(error));
 
 // Use the routes
-app.use('/api', routes);
+app.use('/species-list', routes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
